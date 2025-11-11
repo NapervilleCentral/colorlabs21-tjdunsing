@@ -34,7 +34,9 @@ public class TestPicture17
      Picture ferris1 = new Picture("images/2000 ferris wheel2.jpg");
      Picture ferris2 = new Picture("images/2000 ferris wheel2.jpg");
      Picture ferris3 = new Picture("images/2000 ferris wheel2.jpg");
-
+     Picture ferris4 = new Picture("images/2000 ferris wheel2.jpg");
+     Picture ferris5 = new Picture("images/2000 ferris wheel2.jpg");
+     Picture ferris6 = new Picture("images/2000 ferris wheel2.jpg");
      //apic.explore();
      //ferris1.explore();
      //moto.explore();
@@ -46,14 +48,15 @@ public class TestPicture17
      //how many pixels or how large array
     System.out.println("This is a large array"+pixels.length  );
 
-
+/*
     /**/
         //access each index
-    System.out.println(pixels[17]);
+
+        System.out.println(pixels[17]);
     //access each pixel
     Pixel spot = ferris1.getPixel(100,100);
     Pixel spot2 = ferris1.getPixel(433,283);
-    Pixel ferr17 = pixels[17];
+    /*Pixel ferr17 = pixels[17];
     
     
     ferr17.setRed(240);
@@ -73,55 +76,94 @@ public class TestPicture17
         yuck.setColor(Color.green);
     }
     //ferris1.explore();
-    
+ */   
     
     
     Pixel[] Mpixels;
     Mpixels = ferris1.getPixels();
-    
-    
-    
-    pixels[17].setColor(Color.blue);
-    spot.setColor(new Color(252,252,252));
-    pixels[500034].setColor(Color.blue);
+    Pixel[] Mpixels2;
+    Mpixels2 = ferris2.getPixels();
+    Pixel[] Mpixels3;
+    Mpixels3 = ferris3.getPixels();
+    Pixel[] Mpixels4;
+    Mpixels4 = ferris4.getPixels();
+    Pixel[] Mpixels5;
+    Mpixels5 = ferris5.getPixels();
+    Pixel[] Mpixels6;
+    Mpixels6 = ferris6.getPixels();
+   // pixels[17].setColor(Color.blue);
+   // spot.setColor(new Color(252,252,252));
+    //pixels[500034].setColor(Color.blue);
 
     //ferris1.explore();
 
    // loop to access indexes of array or collection
 //red
-/*    //for each loop spot  is a ?
+   //for each loop spot  is a ?
     for (Pixel spot1 : Mpixels){
-    System.out.println( spot );
+    //System.out.println( spot );
     int red=spot1.getRed();
     red=(int)(red*.25);
     spot1.setRed(red);
     
 }
 ferris1.explore();
-*/ 
+
 //blue 
-/*  
-for (Pixel spot1 : Mpixels){
-    System.out.println( spot );
+ 
+for (Pixel spot1 : Mpixels2){
+    //System.out.println( spot );
     int blue=spot1.getBlue();
     blue=(int)(blue*.25);
     spot1.setBlue(blue);
     
 }
-ferris1.explore();  
-*/
+ferris2.explore();  
+
 //green
-/*
-for (Pixel spot1 : Mpixels){
-    System.out.println( spot );
+
+for (Pixel spot1 : Mpixels3){
+    //System.out.println( spot );
     int green=spot1.getGreen();
     green=(int)(green*.25);
     spot1.setGreen(green);
     
 }
-ferris1.explore();  
-*/ 
+ferris3.explore();  
 
+
+
+for (Pixel spot1 : Mpixels4){
+    int red=spot1.getRed();
+    int blue=spot1.getBlue();
+    int green=spot1.getGreen();
+    int avg=(red+blue+green)/3;
+    spot1.setGreen(avg);
+    spot1.setBlue(avg);
+    spot1.setRed(avg);
+}
+ferris4.explore(); 
+for (Pixel spot1 : Mpixels5){
+    int red=spot1.getRed();
+    int blue=spot1.getBlue();
+    int green=spot1.getGreen();
+    int avg=(red+blue+green)/3;
+    spot1.setGreen(255-green);
+    spot1.setBlue(255-blue);
+    spot1.setRed(255-red);
+}
+ferris5.explore(); 
+
+
+for (Pixel spot1 : Mpixels6){
+    int red=spot1.getRed();
+    int blue=spot1.getBlue();
+    int green=spot1.getGreen();
+    spot1.setGreen(255);
+    spot1.setBlue(0);
+    spot1.setRed(255);
+}
+ferris6.explore(); 
  /*
   * Method to clear red from picture
   * @param none

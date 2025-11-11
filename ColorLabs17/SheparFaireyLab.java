@@ -30,7 +30,7 @@ public class SheparFaireyLab
          Picture me = new Picture("images/beach.jpg");
          Picture me1 = new Picture("images/beach.jpg");
          Picture me2 = new Picture("images/beach.jpg");
-         
+        
          /**
           * method 1 change
           * 
