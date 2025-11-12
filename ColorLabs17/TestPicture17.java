@@ -103,7 +103,7 @@ public class TestPicture17
     for (Pixel spot1 : Mpixels){
     //System.out.println( spot );
     int red=spot1.getRed();
-    red=(int)(red*.25);
+    red=(int)(red*2);
     spot1.setRed(red);
     
 }
@@ -114,7 +114,7 @@ ferris1.explore();
 for (Pixel spot1 : Mpixels2){
     //System.out.println( spot );
     int blue=spot1.getBlue();
-    blue=(int)(blue*.25);
+    blue=(int)(blue*2);
     spot1.setBlue(blue);
     
 }
@@ -125,7 +125,7 @@ ferris2.explore();
 for (Pixel spot1 : Mpixels3){
     //System.out.println( spot );
     int green=spot1.getGreen();
-    green=(int)(green*.25);
+    green=(int)(green*2);
     spot1.setGreen(green);
     
 }
@@ -159,9 +159,9 @@ for (Pixel spot1 : Mpixels6){
     int red=spot1.getRed();
     int blue=spot1.getBlue();
     int green=spot1.getGreen();
-    spot1.setGreen(255);
-    spot1.setBlue(0);
-    spot1.setRed(255);
+    spot1.setGreen(green+50);
+    spot1.setBlue(blue-50);
+    spot1.setRed(green+50);
 }
 ferris6.explore(); 
  /*
