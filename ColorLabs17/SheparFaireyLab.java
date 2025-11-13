@@ -30,13 +30,18 @@ public class SheparFaireyLab
          Picture me = new Picture("images/jenny-red.jpg");
          Picture me1 = new Picture("images/beach.jpg");
          Picture me2 = new Picture("images/beach.jpg");
-        
+         Picture hi = new Picture("images/IMG_1168.jpeg");
+         Picture hi2 = new Picture("images/IMG_1168.jpeg");
          /**
           * method 1 change
           * 
           */
         Pixel[] Mpixels;
         Mpixels = me.getPixels();
+        Pixel[] Mpixels2;
+        Mpixels2 = hi.getPixels();
+        Pixel[] Mpixels3;
+        Mpixels3 = hi2.getPixels();
         Color offwhite = new Color(240,240,225);
         Color boldred = new Color(243,60,60);
         Color boldblue = new Color(50,177,235);
@@ -46,17 +51,17 @@ public class SheparFaireyLab
             int blue=spot1.getBlue();
             int green=spot1.getGreen();
             int avg=(red+blue+green)/3;
-            if (avg >= 160){
-                spot1.setColor(offwhite);
+            if (avg <64 ){
+                spot1.setColor(boldred);
             }
-            if (avg < 160 && avg >=125){
-                spot1.setColor(lightblue);
-            }
-            if (avg <125 && avg >=75){
+            else if (avg < 128){
                 spot1.setColor(boldblue);
             }
-            if (avg <75){
-                spot1.setColor(boldred);
+            else if (avg <192){
+                spot1.setColor(lightblue);
+            }
+            else if (avg <=255){
+                spot1.setColor(offwhite);
             }
         }
         me.explore();
@@ -69,7 +74,63 @@ public class SheparFaireyLab
          /**
           * custom color palette
           */
-
+        Color boldpurple = new Color(81,45,168);
+        Color lightorange = new Color(255,140,0);
+        Color yellow = new Color(255,214,0);
+        Color darkpurple = new Color(54,23,94);
+        Color purple = new Color(156,39,176);
+            for (Pixel spot1 : Mpixels2){
+                int red=spot1.getRed();
+                int blue=spot1.getBlue();
+                int green=spot1.getGreen();
+                int avg=(red+blue+green)/3;
+                if (avg <64 ){
+                    spot1.setColor(darkpurple);
+                }
+                else if (avg < 128){
+                    spot1.setColor(boldpurple);
+                }
+                else if (avg <164){
+                    spot1.setColor(purple);
+                }
+                else if (avg <192){
+                    spot1.setColor(lightorange);
+                }
+                else if (avg <=255){
+                    spot1.setColor(yellow);
+                }
          
-    }//main       
+            }//main
+            hi.explore();
+            //hi.write("images/sf1.jpeg");
+            Color rose = new Color(252,145,135);
+            Color darkrose = new Color(244,105,98);
+            Color red = new Color(255,29,35);
+            Color crimson = new Color(217,0,0);
+            Color darkred = new Color(92,0,2);
+            for (Pixel spot1 : Mpixels3){
+                int red1=spot1.getRed();
+                int blue1=spot1.getBlue();
+                int green1=spot1.getGreen();
+                int avg1=(red1+blue1+green1)/3;
+                if (avg1 <64 ){
+                    spot1.setColor(darkred);
+                }
+                else if (avg1 < 128){
+                    spot1.setColor(crimson);
+                }
+                else if (avg1 <164){
+                    spot1.setColor(red);
+                }
+                else if (avg1 <192){
+                    spot1.setColor(darkrose);
+                }
+                else if (avg1 <=255){
+                    spot1.setColor(rose);
+                }
+         
+            }//main
+            hi2.explore();
+            //hi2.write("images/sf2.jpeg");
 }//class
+}
