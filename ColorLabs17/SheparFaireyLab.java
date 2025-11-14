@@ -32,6 +32,7 @@ public class SheparFaireyLab
          Picture me2 = new Picture("images/beach.jpg");
          Picture hi = new Picture("images/IMG_1168.jpeg");
          Picture hi2 = new Picture("images/IMG_1168.jpeg");
+         Picture hi3 = new Picture("images/IMG_1168.jpeg");
          /**
           * method 1 change
           * 
@@ -42,6 +43,8 @@ public class SheparFaireyLab
         Mpixels2 = hi.getPixels();
         Pixel[] Mpixels3;
         Mpixels3 = hi2.getPixels();
+        Pixel[] Mpixels4;
+        Mpixels4 = hi3.getPixels();
         Color offwhite = new Color(240,240,225);
         Color boldred = new Color(243,60,60);
         Color boldblue = new Color(50,177,235);
@@ -132,5 +135,38 @@ public class SheparFaireyLab
             }//main
             hi2.explore();
             //hi2.write("images/sf2.jpeg");
+            //Color pastelblue = new Color(192,244,245);
+            //Color lightpink = new Color(255,184,174);
+           // Color redpink = new Color(255,147,136);
+            //Color lightrose = new Color(255,127,117);
+            Color black = new Color(30,30,32);
+            Color darkgrey = new Color(49,53,61);
+            Color darkerred = new Color(144,11,10);
+            Color bloodred = new Color(217,0,0);
+            Color trueyellow = new Color(255,214,0);
+            for (Pixel spot1 : Mpixels4){
+                int red1=spot1.getRed();
+                int blue1=spot1.getBlue();
+                int green1=spot1.getGreen();
+                int avg1=(red1+blue1+green1)/3;
+                if (avg1 <64 ){
+                    spot1.setColor(black);
+                }
+                else if (avg1 < 128){
+                    spot1.setColor(darkgrey);
+                }
+                else if (avg1 <164){
+                    spot1.setColor(darkerred);
+                }
+                else if (avg1 <192){
+                    spot1.setColor(bloodred);
+                }
+                else if (avg1 <=255){
+                    spot1.setColor(trueyellow);
+                }
+         
+            }//main
+            hi3.explore();
+            //hi3.write("images/sf3.jpeg");
 }//class
 }
