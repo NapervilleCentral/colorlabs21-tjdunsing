@@ -27,6 +27,7 @@ public class SheparFaireyLab
          //relative path
          Picture apic = new Picture("images\\beach.jpg");
          //change with selfie picture
+         
          Picture me = new Picture("images/jenny-red.jpg");
          Picture me1 = new Picture("images/beach.jpg");
          Picture me2 = new Picture("images/beach.jpg");
@@ -39,6 +40,8 @@ public class SheparFaireyLab
           */
         Pixel[] Mpixels;
         Mpixels = me.getPixels();
+        Pixel[] Mpixels11;
+        Mpixels11 = me1.getPixels();
         Pixel[] Mpixels2;
         Mpixels2 = hi.getPixels();
         Pixel[] Mpixels3;
@@ -73,7 +76,33 @@ public class SheparFaireyLab
           * method 2 change
           * 
           */
-         
+         int min = 255;
+         int max = 0;
+             for (Pixel spot1 : Mpixels11){
+            int red=spot1.getRed();
+            int blue=spot1.getBlue();
+            int green=spot1.getGreen();
+            int avg=(red+blue+green)/3;
+            if (avg<min){
+                min=avg;
+            }
+            if (avg>max){
+                max=avg;
+            }
+            if (min<avg&&avg<=max/4 ){
+                spot1.setColor(boldred);
+            }
+            else if (max/4<avg&&avg<=max/2){
+                spot1.setColor(boldblue);
+            }
+            else if (max/2<avg&&avg<=max*.75){
+                spot1.setColor(lightblue);
+            }
+            else if (max*.75<avg&&avg<=max){
+                spot1.setColor(offwhite);
+            }
+        }
+        me1.explore();
          /**
           * custom color palette
           */
