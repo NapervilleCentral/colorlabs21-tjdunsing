@@ -28,9 +28,9 @@ public class SheparFaireyLab
          Picture apic = new Picture("images\\beach.jpg");
          //change with selfie picture
          
-         Picture me = new Picture("images/jenny-red.jpg");
-         Picture me1 = new Picture("images/beach.jpg");
-         Picture me2 = new Picture("images/beach.jpg");
+         Picture me = new Picture("images/IMG_1168.jpeg");
+         Picture me1 = new Picture("images/IMG_1168.jpeg");
+         Picture me2 = new Picture("images/IMG_1168.jpeg");
          Picture hi = new Picture("images/IMG_1168.jpeg");
          Picture hi2 = new Picture("images/IMG_1168.jpeg");
          Picture hi3 = new Picture("images/IMG_1168.jpeg");
@@ -71,7 +71,7 @@ public class SheparFaireyLab
             }
         }
         me.explore();
-
+        //me.write("images/me.jpeg");
          /**
           * method 2 change
           * 
@@ -103,6 +103,7 @@ public class SheparFaireyLab
             }
         }
         me1.explore();
+        //me1.write("images/me1.jpeg");
          /**
           * custom color palette
           */
