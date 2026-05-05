@@ -37,6 +37,7 @@ public class TestPicture17
      Picture ferris4 = new Picture("images/2000 ferris wheel2.jpg");
      Picture ferris5 = new Picture("images/2000 ferris wheel2.jpg");
      Picture ferris6 = new Picture("images/2000 ferris wheel2.jpg");
+     Picture temple = new Picture("images/temple.jpg");
      //apic.explore();
      //ferris1.explore();
      //moto.explore();
@@ -209,19 +210,19 @@ final double  FACTOR = .5;
   /**/ 
     //write/save a picture as a file
     ferris1.write("images/ferris11.jpg");
-    mirrorVertical(ferris1);
-    ferris1.explore();
+    mirrorVertical(temple);
+    temple.explore();
     //copytoCanvas(ferris1,640x480);
 
     /**/
   }//main
   public static void mirrorVertical(Picture source){
       int width = source.getWidth();
-      int mirrorPoint = width/2;
+      int mirrorPoint = 276;//source.getWidth/2
       Pixel leftPixel = null;
       Pixel rightPixel = null;
       //loop through all the rows
-      for(int y=0; y<source.getHeight(); y++){
+      for(int y=0; y<156; y++){//source.getHeight
           //loop from 0 to the middle (mirror point)
           for(int x = 0; x<mirrorPoint; x++){
               leftPixel = source.getPixel(x,y);
@@ -231,12 +232,18 @@ final double  FACTOR = .5;
       }
   }//mirrorVertical
   //add two ints to params to place the picture you want on the target
+  //to make it smaller, do sourceX+=2
+  //to make it bigger sourceX+=.5  larger, copies every pixel twice but you have to cast as int in the getPix and setColor
   public static void copytoCanvas(Picture source, Picture target){
       Pixel sourcePix = null;
       Pixel targetPix = null;
       
       //loop thru jcolumns(targetX is starting point on canvas)
-      for (int sourceX=0,targetX=0; sourceX<source.getWidth();sourceX++,targetX++){
+      
+      for (int sourceX=0,targetX=0; sourceX<source.getWidth();sourceX++,targetX++)
+      {
+          //loops thru rows, also needs to be sourceY+=2 to make it smaller, skips every other pixel
+          //sourceY+=0.5 to make it copy every pixel twice, bigger
           for (int sourceY=0,targetY=0; sourceY<source.getHeight();sourceY++,targetY++){
               sourcePix = source.getPixel(sourceX,sourceY);
               targetPix = target.getPixel(targetX,targetY);
@@ -244,4 +251,39 @@ final double  FACTOR = .5;
           }
       }
   }
+    public static void makeSmall(Picture source, Picture target){
+      Pixel sourcePix = null;
+      Pixel targetPix = null;
+      
+      //loop thru jcolumns(targetX is starting point on canvas)
+      
+      for (int sourceX=0,targetX=0; sourceX<source.getWidth();sourceX+=2,targetX++)
+      {
+          //loops thru rows, also needs to be sourceY+=2 to make it smaller, skips every other pixel
+          //sourceY+=0.5 to make it copy every pixel twice, bigger
+          for (int sourceY=0,targetY=0; sourceY<source.getHeight();sourceY+=2,targetY++){
+              sourcePix = source.getPixel(sourceX,sourceY);
+              targetPix = target.getPixel(targetX,targetY);
+              targetPix.setColor(sourcePix.getColor());
+          }
+      }
+  }
+    public static void makeBig(Picture source, Picture target){
+      Pixel sourcePix = null;
+      Pixel targetPix = null;
+      
+      //loop thru jcolumns(targetX is starting point on canvas)
+      
+      for (int sourceX=0,targetX=0; sourceX<source.getWidth();sourceX+=0.5,targetX++)
+      {
+          //loops thru rows, also needs to be sourceY+=2 to make it smaller, skips every other pixel
+          //sourceY+=0.5 to make it copy every pixel twice, bigger
+          for (int sourceY=0,targetY=0; sourceY<source.getHeight();sourceY+=0.5,targetY++){
+              sourcePix = source.getPixel(sourceX,sourceY);
+              targetPix = target.getPixel(targetX,targetY);
+              targetPix.setColor(sourcePix.getColor());
+          }
+      }
+  }
 }//class
+
