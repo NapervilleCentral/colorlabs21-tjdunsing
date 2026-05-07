@@ -38,6 +38,9 @@ public class TestPicture17
      Picture ferris5 = new Picture("images/2000 ferris wheel2.jpg");
      Picture ferris6 = new Picture("images/2000 ferris wheel2.jpg");
      Picture temple = new Picture("images/temple.jpg");
+     Picture disgust = new Picture("images/disgust.jpg");
+     Picture laser = new Picture("images/laser.jpg");
+     Picture disgust2 = new Picture("images/disgust.jpg");
      //apic.explore();
      //ferris1.explore();
      //moto.explore();
@@ -81,7 +84,7 @@ public class TestPicture17
     
     
     Pixel[] Mpixels;
-    Mpixels = ferris1.getPixels();
+    Mpixels = disgust2.getPixels();
     Pixel[] Mpixels2;
     Mpixels2 = ferris2.getPixels();
     Pixel[] Mpixels3;
@@ -101,6 +104,7 @@ public class TestPicture17
    // loop to access indexes of array or collection
 //red
    //for each loop spot  is a ?
+   /**
     for (Pixel spot1 : Mpixels){
     //System.out.println( spot );
     int red=spot1.getRed();
@@ -165,7 +169,9 @@ for (Pixel spot1 : Mpixels6){
     spot1.setRed(green+50);
 }
 //ferris6.explore(); 
- /*
+**/ 
+/*
+  * 
   * Method to clear red from picture
   * @param none
   * @return none
@@ -209,13 +215,54 @@ final double  FACTOR = .5;
 
   /**/ 
     //write/save a picture as a file
-    ferris1.write("images/ferris11.jpg");
-    mirrorVertical(temple);
-    temple.explore();
+    //ferris1.write("images/ferris11.jpg");
+  //  makeSmall(temple,640x480);
+    //temple.explore();
     //copytoCanvas(ferris1,640x480);
-
+    merge(disgust,laser);
+    disgust.explore();
+     Color crimson = new Color(217,0,0);
+     Color darkred = new Color(92,0,2);
+     Color black = new Color(0,0,0);
+     Color medblack = new Color(30,30,30);
+     Color darkgrey = new Color(60,60,60);
+     for (Pixel spot1 : Mpixels){
+            int red1=spot1.getRed();
+            int blue1=spot1.getBlue();
+            int green1=spot1.getGreen();
+            int avg1=(red1+blue1+green1)/3;
+            if (avg1 <64 ){
+                spot1.setColor(black);
+            }
+            else if (avg1 < 128){
+                spot1.setColor(medblack);
+            }
+            else if (avg1 <164){
+                spot1.setColor(darkgrey);
+            }
+            else if (avg1 <192){
+                spot1.setColor(darkred);
+            }
+            else if (avg1 <=255){
+                spot1.setColor(crimson);
+            }
+         
+            }//main
+     disgust2.explore();
+    //laser.explore();
     /**/
   }//main
+  public static void merge(Picture source, Picture merge){
+      for(int y=0; y<source.getHeight(); y++){//source.getHeight
+          //loop from 0 to the middle (mirror point)
+          for(int x = 0; x<source.getWidth(); x++){
+              Pixel sourcePix = source.getPixel(x,y);
+              Pixel mergePix = merge.getPixel(x,y);
+              Color avg = new Color((sourcePix.getRed()+mergePix.getRed())/2,(sourcePix.getBlue()+mergePix.getBlue())/2,(sourcePix.getGreen()+mergePix.getGreen())/2);
+              sourcePix.setColor(avg);
+          }
+      }
+  }
   public static void mirrorVertical(Picture source){
       int width = source.getWidth();
       int mirrorPoint = 276;//source.getWidth/2
