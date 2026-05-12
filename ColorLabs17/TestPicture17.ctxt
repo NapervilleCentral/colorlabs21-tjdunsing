@@ -13,4 +13,6 @@ comment5.params=source\ target
 comment5.target=void\ makeSmall(Picture,\ Picture)
 comment6.params=source\ target
 comment6.target=void\ makeBig(Picture,\ Picture)
-numComments=7
+comment7.params=Source\ TimesRecursed
+comment7.target=void\ Recurse(Picture,\ int)
+numComments=8

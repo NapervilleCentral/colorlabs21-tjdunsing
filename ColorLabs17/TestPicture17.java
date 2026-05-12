@@ -41,6 +41,9 @@ public class TestPicture17
      Picture disgust = new Picture("images/disgust.jpg");
      Picture laser = new Picture("images/laser.jpg");
      Picture disgust2 = new Picture("images/disgust.jpg");
+     Picture disgust3 = new Picture("images/disgust.jpg");
+     Picture disgust4 = new Picture("images/disgust.jpg");
+     Picture canvas = new Picture("images/640x480.jpg");
      //apic.explore();
      //ferris1.explore();
      //moto.explore();
@@ -249,7 +252,16 @@ final double  FACTOR = .5;
          
             }//main
      disgust2.explore();
+     mirrorVertical(disgust3);
+     disgust3.explore();
+     Recurse(disgust4,10);
+     disgust4.explore();
     //laser.explore();
+    //copytoCanvas(disgust,canvas);
+    //copytoCanvas(disgust2,canvas);
+    //copytoCanvas(disgust3,canvas);
+    
+    canvas.explore();
     /**/
   }//main
   public static void merge(Picture source, Picture merge){
@@ -265,7 +277,7 @@ final double  FACTOR = .5;
   }
   public static void mirrorVertical(Picture source){
       int width = source.getWidth();
-      int mirrorPoint = 276;//source.getWidth/2
+      int mirrorPoint = source.getWidth()/2;//source.getWidth/2
       Pixel leftPixel = null;
       Pixel rightPixel = null;
       //loop through all the rows
@@ -332,5 +344,15 @@ final double  FACTOR = .5;
           }
       }
   }
+    public static void Recurse(Picture Source, int TimesRecursed){
+        if (TimesRecursed <=1){
+            Source.explore();
+        }
+        else{
+            makeSmall(Source,Source);
+            Recurse(Source,TimesRecursed-1);
+        }
+    }
+    
 }//class
 
