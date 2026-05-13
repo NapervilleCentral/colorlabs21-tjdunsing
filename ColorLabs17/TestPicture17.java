@@ -43,6 +43,8 @@ public class TestPicture17
      Picture disgust2 = new Picture("images/disgust.jpg");
      Picture disgust3 = new Picture("images/disgust.jpg");
      Picture disgust4 = new Picture("images/disgust.jpg");
+     Picture disgust5 = new Picture("images/disgust.jpg");
+     Picture disgust6 = new Picture("images/disgust.jpg");
      Picture canvas = new Picture("images/640x480.jpg");
      //apic.explore();
      //ferris1.explore();
@@ -95,9 +97,9 @@ public class TestPicture17
     Pixel[] Mpixels4;
     Mpixels4 = ferris4.getPixels();
     Pixel[] Mpixels5;
-    Mpixels5 = ferris5.getPixels();
+    Mpixels5 = disgust5.getPixels();
     Pixel[] Mpixels6;
-    Mpixels6 = ferris6.getPixels();
+    Mpixels6 = disgust6.getPixels();
    // pixels[17].setColor(Color.blue);
    // spot.setColor(new Color(252,252,252));
     //pixels[500034].setColor(Color.blue);
@@ -224,8 +226,9 @@ final double  FACTOR = .5;
     //copytoCanvas(ferris1,640x480);
     merge(disgust,laser);
     disgust.explore();
-     Color crimson = new Color(217,0,0);
-     Color darkred = new Color(92,0,2);
+     Color whiteish = new Color(240,240,240);
+     Color midwhite = new Color (180,180,180);
+     Color grey = new Color(120,120,120);
      Color black = new Color(0,0,0);
      Color medblack = new Color(30,30,30);
      Color darkgrey = new Color(60,60,60);
@@ -234,21 +237,83 @@ final double  FACTOR = .5;
             int blue1=spot1.getBlue();
             int green1=spot1.getGreen();
             int avg1=(red1+blue1+green1)/3;
-            if (avg1 <64 ){
+            if (avg1 <32 ){
                 spot1.setColor(black);
             }
-            else if (avg1 < 128){
+            else if (avg1 < 64){
                 spot1.setColor(medblack);
             }
-            else if (avg1 <164){
+            else if (avg1 < 128){
                 spot1.setColor(darkgrey);
             }
+            else if (avg1 <164){
+                spot1.setColor(grey);
+            }
             else if (avg1 <192){
-                spot1.setColor(darkred);
+                spot1.setColor(midwhite);
             }
             else if (avg1 <=255){
-                spot1.setColor(crimson);
+                spot1.setColor(whiteish);
             }
+         
+            }//main
+           Color boldpurple = new Color(81,45,168);
+        Color lightorange = new Color(255,140,0);
+        Color medium = new Color(255,177,0);
+        Color yellow = new Color(255,214,0);
+        Color darkpurple = new Color(54,23,94);
+        Color purple = new Color(156,39,176);
+            for (Pixel spot1 : Mpixels5){
+                int red=spot1.getRed();
+                int blue=spot1.getBlue();
+                int green=spot1.getGreen();
+                int avg=(red+blue+green)/3;
+                if (avg <32 ){
+                    spot1.setColor(darkpurple);
+                }
+                else if (avg < 64){
+                    spot1.setColor(boldpurple);
+                }
+                else if (avg <128){
+                    spot1.setColor(purple);
+                }
+                else if (avg <160){
+                    spot1.setColor(lightorange);
+                }
+                else if (avg <=192){
+                    spot1.setColor(medium);
+                }
+                else if (avg <=256){
+                    spot1.setColor(yellow);
+                }
+         
+            }//main
+            Color Darkwalnut = new Color(88, 39, 7);
+            Color Rustbrown = new Color(151, 45, 7);
+            Color Tomato = new Color(255, 78, 62);
+            Color Amberflame = new Color(250, 178, 15);
+            Color Bananacream = new Color(255, 200, 72);
+            
+            for (Pixel spot1 : Mpixels6){
+                int red=spot1.getRed();
+                int blue=spot1.getBlue();
+                int green=spot1.getGreen();
+                int avg=(red+blue+green)/3;
+                if (avg <51 ){
+                    spot1.setColor(Darkwalnut);
+                }
+                else if (avg < 102){
+                    spot1.setColor(Rustbrown);
+                }
+                else if (avg <153){
+                    spot1.setColor(Tomato);
+                }
+                else if (avg <=201){
+                    spot1.setColor(Amberflame);
+                }
+                else if (avg <=256){
+                    spot1.setColor(Bananacream);
+                }
          
             }//main
      disgust2.explore();
@@ -256,6 +321,8 @@ final double  FACTOR = .5;
      disgust3.explore();
      Recurse(disgust4,10);
      disgust4.explore();
+     disgust5.explore();
+     disgust6.explore();
     //laser.explore();
     //copytoCanvas(disgust,canvas);
     //copytoCanvas(disgust2,canvas);
