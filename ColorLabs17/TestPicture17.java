@@ -25,46 +25,45 @@ public class TestPicture17
      String fileName = FileChooser.pickAFile();
      Picture pictObj = new Picture(fileName);
      pictObj.explore();
-
+     Picture reference = new Picture("images/disgust.jpg");
+     int W= reference.getWidth();
+     int H= reference.getHeight();
+     Picture canvas = new Picture(W*3,H*2);
+     
      //opens a pictue using a path
      //Picture apic = new Picture("C:\\Users\\khayes\\Favorites\\Documents\APCS- Java\chap03\Curriclum 2013\Picture Color labs\images\\beach.jpg");
      //Know it, Love it, Live it!!!
      //relative path                    dir/folder/file
      Picture apic = new Picture("images\\beach.jpg");
-     Picture ferris1 = new Picture("images/2000 ferris wheel2.jpg");
-     Picture ferris2 = new Picture("images/2000 ferris wheel2.jpg");
-     Picture ferris3 = new Picture("images/2000 ferris wheel2.jpg");
-     Picture ferris4 = new Picture("images/2000 ferris wheel2.jpg");
-     Picture ferris5 = new Picture("images/2000 ferris wheel2.jpg");
-     Picture ferris6 = new Picture("images/2000 ferris wheel2.jpg");
      Picture temple = new Picture("images/temple.jpg");
-     Picture disgust = new Picture("images/disgust.jpg");
      Picture laser = new Picture("images/laser.jpg");
+     Picture disgust = new Picture("images/disgust.jpg");
+     Picture disgust1 = new Picture("images/disgust.jpg");
      Picture disgust2 = new Picture("images/disgust.jpg");
      Picture disgust3 = new Picture("images/disgust.jpg");
      Picture disgust4 = new Picture("images/disgust.jpg");
      Picture disgust5 = new Picture("images/disgust.jpg");
      Picture disgust6 = new Picture("images/disgust.jpg");
-     Picture canvas = new Picture("images/640x480.jpg");
+    // Picture canvas = new Picture("images/640x480.jpg");
      //apic.explore();
      //ferris1.explore();
      //moto.explore();
      //makes an array of pixels
      Pixel[] pixels;
      //gets pixels from picture and assigns to pixels array
-     pixels = ferris1.getPixels();
+     //pixels = ferris1.getPixels();
     
      //how many pixels or how large array
-    System.out.println("This is a large array"+pixels.length  );
+    //System.out.println("This is a large array"+pixels.length  );
 
 /*
     /**/
         //access each index
 
-        System.out.println(pixels[17]);
+      //  System.out.println(pixels[17]);
     //access each pixel
-    Pixel spot = ferris1.getPixel(100,100);
-    Pixel spot2 = ferris1.getPixel(433,283);
+    //Pixel spot = ferris1.getPixel(100,100);
+    //Pixel spot2 = ferris1.getPixel(433,283);
     /*Pixel ferr17 = pixels[17];
     
     
@@ -91,11 +90,11 @@ public class TestPicture17
     Pixel[] Mpixels;
     Mpixels = disgust2.getPixels();
     Pixel[] Mpixels2;
-    Mpixels2 = ferris2.getPixels();
+   // Mpixels2 = ferris2.getPixels();
     Pixel[] Mpixels3;
-    Mpixels3 = ferris3.getPixels();
+   // Mpixels3 = ferris3.getPixels();
     Pixel[] Mpixels4;
-    Mpixels4 = ferris4.getPixels();
+    //Mpixels4 = ferris4.getPixels();
     Pixel[] Mpixels5;
     Mpixels5 = disgust5.getPixels();
     Pixel[] Mpixels6;
@@ -225,7 +224,7 @@ final double  FACTOR = .5;
     //temple.explore();
     //copytoCanvas(ferris1,640x480);
     merge(disgust,laser);
-    disgust.explore();
+    
      Color whiteish = new Color(240,240,240);
      Color midwhite = new Color (180,180,180);
      Color grey = new Color(120,120,120);
@@ -293,7 +292,7 @@ final double  FACTOR = .5;
             Color Tomato = new Color(255, 78, 62);
             Color Amberflame = new Color(250, 178, 15);
             Color Bananacream = new Color(255, 200, 72);
-            
+          /**  
             for (Pixel spot1 : Mpixels6){
                 int red=spot1.getRed();
                 int blue=spot1.getBlue();
@@ -316,19 +315,28 @@ final double  FACTOR = .5;
                 }
          
             }//main
+            **/
+     disgust.explore();
+     disgust1.explore();
      disgust2.explore();
      mirrorVertical(disgust3);
      disgust3.explore();
      Recurse(disgust4,10);
-     disgust4.explore();
      disgust5.explore();
-     disgust6.explore();
+    copyToCanvas(disgust, canvas, 0, 0);           
+    copyToCanvas(disgust1, canvas, W, 0);           
+    copyToCanvas(disgust2, canvas, W * 2, 0);       
+    copyToCanvas(disgust3, canvas, 0, H);           
+    copyToCanvas(disgust4, canvas, W, H);           
+    copyToCanvas(disgust5, canvas, W * 2, H);
+     //disgust6.explore();
     //laser.explore();
     //copytoCanvas(disgust,canvas);
     //copytoCanvas(disgust2,canvas);
     //copytoCanvas(disgust3,canvas);
     
     canvas.explore();
+    //canvas.write("images/collage.jpeg");
     /**/
   }//main
   public static void merge(Picture source, Picture merge){
@@ -360,22 +368,22 @@ final double  FACTOR = .5;
   //add two ints to params to place the picture you want on the target
   //to make it smaller, do sourceX+=2
   //to make it bigger sourceX+=.5  larger, copies every pixel twice but you have to cast as int in the getPix and setColor
-  public static void copytoCanvas(Picture source, Picture target){
-      Pixel sourcePix = null;
-      Pixel targetPix = null;
-      
-      //loop thru jcolumns(targetX is starting point on canvas)
-      
-      for (int sourceX=0,targetX=0; sourceX<source.getWidth();sourceX++,targetX++)
-      {
-          //loops thru rows, also needs to be sourceY+=2 to make it smaller, skips every other pixel
+  public static void copyToCanvas(Picture source, Picture target, int startX, int startY){
+    Pixel sourcePix = null;
+    Pixel targetPix = null;
+    
+    //loop thru jcolumns(targetX is starting point on canvas)
+    
+    for (int sourceX = 0; sourceX < source.getWidth(); sourceX++) 
+    {
+        //loops thru rows, also needs to be sourceY+=2 to make it smaller, skips every other pixel
           //sourceY+=0.5 to make it copy every pixel twice, bigger
-          for (int sourceY=0,targetY=0; sourceY<source.getHeight();sourceY++,targetY++){
-              sourcePix = source.getPixel(sourceX,sourceY);
-              targetPix = target.getPixel(targetX,targetY);
-              targetPix.setColor(sourcePix.getColor());
-          }
-      }
+        for (int sourceY = 0; sourceY < source.getHeight(); sourceY++) {
+            sourcePix = source.getPixel(sourceX, sourceY);
+            targetPix = target.getPixel(startX + sourceX, startY + sourceY);
+            targetPix.setColor(sourcePix.getColor());
+        }
+    }
   }
     public static void makeSmall(Picture source, Picture target){
       Pixel sourcePix = null;
